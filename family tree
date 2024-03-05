@@ -1,0 +1,20 @@
+male(john).
+male(jim).
+male(bob).
+female(mary).
+female(susan).
+female(kate).
+
+% Define parent-child relationships
+parent(john, jim).
+parent(john, susan).
+parent(mary, jim).
+parent(mary, susan).
+parent(jim, bob).
+parent(kate, bob).
+
+% Define rules for mother, father, sibling, and grandparent
+mother(M, C) :- female(M), parent(M, C).
+father(F, C) :- male(F), parent(F, C).
+sibling(S, C) :- parent(P, S), parent(P, C), S \= C.
+grandparent(G, C) :- parent(G, P), parent(P, C).
